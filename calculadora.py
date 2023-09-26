@@ -1,4 +1,5 @@
 def status():
+    from functools import reduce as rd
     ligado = True
     while ligado == True:
         lista = []
@@ -22,10 +23,7 @@ def status():
             escolha_numeros = escolha_numeros.split(' ')
             for numero in escolha_numeros:
                 lista.append(int(numero))
-                resultado_sub = lista[0]
-                for numero_lista_sub in range(1, len(lista)):
-                    resultado_sub -= lista[numero_lista_sub]
-            print(f'O resultado da subtração dos numeros {lista} é: {resultado_sub}')
+            print(f'O resultado da subtração dos numeros {escolha_numeros} é {rd(lambda x, y: x - y, lista)}')
             lista.clear
         elif escolha == 'M':
             print('Você escolheu Multiplicação')
@@ -33,10 +31,7 @@ def status():
             escolha_numeros = escolha_numeros.split(' ')
             for numero in escolha_numeros:
                 lista.append(int(numero))
-                resultado_mult = lista[0]
-                for numero_lista_mult in range(1, len(lista)):
-                    resultado_mult *= lista[numero_lista_mult]
-            print(f'O resultado da subtração dos numeros {lista} é: {resultado_mult}')
+            print(f'O resultado da multiplicação dos numeros {escolha_numeros} é {rd(lambda x, y: x * y, lista)}')
             lista.clear
         elif escolha == 'D':
             print('Você escolheu Divisão')
@@ -44,10 +39,7 @@ def status():
             escolha_numeros = escolha_numeros.split(' ')
             for numero in escolha_numeros:
                 lista.append(int(numero))
-                resultado_div = lista[0]
-                for numero_lista_div in range(1, len(lista)):
-                    resultado_div /= lista[numero_lista_div]
-            print(f'O resultado da subtração dos numeros {lista} é: {resultado_div}')
+            print(f'O resultado da Divisão dos numeros {escolha_numeros} é {rd(lambda x, y: x / y, lista)}')
             lista.clear
         else:
             break
